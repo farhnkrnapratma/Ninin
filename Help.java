@@ -1,16 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// SPDX-License-Identifier: MIT
+import greenfoot.*;
 
-/**
- * Write a description of class Help here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Help extends Actor
-{
-    public Help()
-    {   GreenfootImage img = getImage(); 
-        img.scale(150, 70); 
+public class Help extends Actor {
+
+    public Help() {
+        GreenfootImage img = getImage();
+        img.scale(150, 70);
         setImage(img);
     }
 }

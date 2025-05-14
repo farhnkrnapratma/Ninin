@@ -1,34 +1,17 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// SPDX-License-Identifier: MIT
+import greenfoot.*;
 
-/**
- * Write a description of class Forest here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Forest extends World
-{
+public class Forest extends World {
 
-    /**
-     * Constructor for objects of class Forest.
-     * 
-     */
-    public Forest()
-    {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(1000, 450, 1); 
+    public Forest() {
+        super(1000, 450, 1);
         prepare();
     }
-    
-    /**
-     * Prepare the world for the start of the program.
-     * That is: create the initial objects and add them to the world.
-     */
-    private void prepare()
-    {
+
+    private void prepare() {
         Hero hero = new Hero();
-        addObject(hero,157,304);
-        hero.setLocation(174,336);
-        hero.setLocation(198,292);
+        addObject(hero, 157, 304);
+        hero.setLocation(174, 336);
+        hero.setLocation(198, 292);
     }
 }

@@ -1,16 +1,11 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// SPDX-License-Identifier: MIT
+import greenfoot.*;
 
-/**
- * Write a description of class Info here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Info extends Actor
-{
-    public Info()
-    {   GreenfootImage img = getImage(); // Ambil gambar karakter
-        img.scale(150, 70); // Ubah ukurannya jadi 50x50 piksel
+public class Info extends Actor {
+
+    public Info() {
+        GreenfootImage img = getImage();
+        img.scale(150, 70);
         setImage(img);
     }
 }
