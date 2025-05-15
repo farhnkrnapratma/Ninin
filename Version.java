@@ -1,9 +1,8 @@
-// SPDX-License-Identifier: MIT
 import greenfoot.*;
 
-public class Info extends Actor {
-
-    public Info() {
+public class Version extends Actor
+{
+    public Version() {
         GreenfootImage img = getImage();
         img.scale(160, 70);
         setImage(img);
