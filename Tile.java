@@ -1,38 +1,23 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// SPDX-License-Identifier: MIT
+import greenfoot.*;
 
-/**
- * Write a description of class Tile here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class Tile  extends Actor
-{
-    /**
-     * Act - do whatever the Tile wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() 
-    {
-        // Add your action code here.
-    }    
-    
-    public void SetGFX(int ID)
-    {
-        switch (ID)
-        {
-            case 1 :
-                setImage("Block.bmp");
-            break;
-            case 2 :
-                setImage("BlockGrass.bmp");
-            break;
-            default :
-            break;
-        }
-        
-        World welt = (JumpNRun)this.getWorld();
-        welt.addObject(new Coin(),22,22);
+public class Tile extends Actor {
+  public void act() {
+  }
 
+  public void SetGFX(int ID) {
+    switch (ID) {
+      case 1:
+        setImage("Block.bmp");
+        break;
+      case 2:
+        setImage("BlockGrass.bmp");
+        break;
+      default:
+        break;
     }
+
+    World welt = (JumpNRun) this.getWorld();
+    welt.addObject(new Coin(), 22, 22);
+  }
 }
