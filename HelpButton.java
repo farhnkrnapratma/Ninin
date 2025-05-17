@@ -1,15 +1,9 @@
-import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class HomeButton here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
-public class HomeButton extends Actor {
-  public HomeButton() {
+public class HelpButton extends Actor {
+  public HelpButton() {
     GreenfootImage img = getImage();
-    img.scale(120, 50);
+    img.scale(160, 70);
     setImage(img);
   }
 
@@ -22,7 +16,7 @@ public class HomeButton extends Actor {
     }
     if (Greenfoot.mouseClicked(this)) {
       Greenfoot.delay(2);
-      Greenfoot.setWorld(new Menu());
+      Greenfoot.setWorld(new HelpMenu());
     }
   }
 }

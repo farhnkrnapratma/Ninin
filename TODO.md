@@ -4,15 +4,15 @@
 - [ ] BG untuk setiap level
 - [ ] Desain menu utama
   - [ ] Play
-  - [ ] Help
-  - [ ] Info
+  - [ ] HelpButton
+  - [ ] InfoButton
   - [ ] Versi
   - [ ] Exit
   - [ ] Background
   - [ ] Logo
 - [ ] Menu retry baru
   - [ ] Replay
-  - [ ] Help
+  - [ ] HelpButton
   - [ ] Exit
 - [ ] Edit aset di Photoshop
   - [ ] Hero
@@ -21,7 +21,7 @@
   - [ ] Kotak kayu
   - [ ] Tanah rumput
   - [ ] Tanah bawah
-  - [ ] Coin ke Scroll
+  - [ ] Scroll ke Scroll
 - [ ] Menu tamat
   - [ ] Play again ke level 1
   - [ ] Donate

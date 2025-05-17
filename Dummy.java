@@ -22,7 +22,7 @@ public class Dummy extends Objects {
     if (canSee(Player.class)) eat(Player.class);
     else if (canSee(Box.class)) eat(Box.class);
     else if (canSee(Block.class)) eat(Block.class);
-    else if (canSee(Coin.class)) eat(Coin.class);
+    else if (canSee(Scroll.class)) eat(Scroll.class);
     else if (canSee(Enemy.class)) eat(Enemy.class);
   }
 }
