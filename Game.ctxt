@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.target=Game
+comment1.params=
+comment1.target=void\ ReloadLevel()
+comment2.params=
+comment2.target=Game()
+comment3.params=level
+comment3.target=void\ ChangeLevel(int)
+comment4.params=
+comment4.target=void\ GenerateLevel()
+comment5.params=
+comment5.target=void\ act()
+comment6.params=x\ y
+comment6.target=boolean\ isSolid(int,\ int)
+comment7.params=x\ y
+comment7.target=boolean\ onSpike(int,\ int)
+numComments=8
