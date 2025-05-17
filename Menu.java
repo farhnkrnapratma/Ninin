@@ -20,7 +20,7 @@ public class Menu extends World {
      * them to the world.
      */
     private void prepare() {
-        Play play = new Play();
+        PlayButton play = new PlayButton();
         addObject(play, 292, 413);
         play.setLocation(318, 399);
         play.setLocation(299, 488);
