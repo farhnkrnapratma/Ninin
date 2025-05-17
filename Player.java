@@ -7,9 +7,9 @@ public class Player extends Objects {
   private final int JumpMAX = 60;
   private boolean freeze = false;
   private int TILE_SIZE = 20;
-  private JumpNRun m_World;
+  private Game m_World;
 
-  public Player(JumpNRun m_parent) {
+  public Player(Game m_parent) {
     m_World = m_parent;
   }
 
@@ -170,8 +170,7 @@ public class Player extends Objects {
         changeimage = true;
       }
 
-      if (velocity_x == 0) {
-      }
+      if (velocity_x == 0) {}
     }
   }
 
@@ -224,8 +223,8 @@ public class Player extends Objects {
 
   public void act() {
     if (!freeze) {
-      if (canSee(Coin.class)) {
-        eat(Coin.class);
+      if (canSee(Scroll.class)) {
+        eat(Scroll.class);
       }
 
       GetInput();

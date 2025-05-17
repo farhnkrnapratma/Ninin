@@ -31,13 +31,13 @@ public class Box extends Objects {
     Actor Enemy2 = getOneObjectAtOffset(offsetx + (int) _velx, offsety, Enemy.class);
 
     return Block != null
-            || Block2 != null
-            || Box != null
-            || Box2 != null
-            || Player != null
-            || Player2 != null
-            || Enemy != null
-            || Enemy2 != null;
+        || Block2 != null
+        || Box != null
+        || Box2 != null
+        || Player != null
+        || Player2 != null
+        || Enemy != null
+        || Enemy2 != null;
   }
 
   public void Collision() {
@@ -106,11 +106,11 @@ public class Box extends Objects {
       Actor Player2 = getOneObjectAtOffset(-8, 10, Player.class);
 
       if (Block == null
-              && Block2 == null
-              && Box == null
-              && Box2 == null
-              && Player == null
-              && Player2 == null) {
+          && Block2 == null
+          && Box == null
+          && Box2 == null
+          && Player == null
+          && Player2 == null) {
         velocity_y = 0.3f;
       }
     }

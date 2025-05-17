@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 import greenfoot.*;
 
-public class Coin extends Objects {
+public class Scroll extends Objects {
   public int gfx = 1;
   public int wait = 5;
 
@@ -10,7 +10,7 @@ public class Coin extends Objects {
   GreenfootImage CoinAnim3 = new GreenfootImage("Coin3_32.png");
   GreenfootImage CoinAnim4 = new GreenfootImage("Coin4_32.png");
 
-  public Coin() {
+  public Scroll() {
     setImage("CoinANIM.gif");
   }
 

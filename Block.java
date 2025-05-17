@@ -22,8 +22,7 @@ public class Block extends Tile {
     }
   }
 
-  public void act() {
-  }
+  public void act() {}
 
   public boolean isDeadly() {
     return GFX == 3;
