@@ -4,7 +4,7 @@ import greenfoot.*;
 public class Version extends Actor {
   public Version() {
     GreenfootImage img = getImage();
-    img.scale(100, 40);
+    img.scale(90, 50);
     setImage(img);
   }
 }
