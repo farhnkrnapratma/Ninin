@@ -67,5 +67,20 @@ public class Menu extends World {
         play.setLocation(267,353);
         HelpButton.setLocation(271,434);
         InfoButton.setLocation(287,500);
+        InfoButton.setLocation(299,499);
+        InfoButton.setLocation(251,496);
+        InfoButton.setLocation(268,504);
+        play.setLocation(274,358);
+        play.setLocation(265,358);
+        play.setLocation(267,360);
+        play.setLocation(275,364);
+        HelpButton.setLocation(282,416);
+        HelpButton.setLocation(279,421);
+        HelpButton.setLocation(279,430);
+        HelpButton.setLocation(276,430);
+        InfoButton.setLocation(299,496);
+        InfoButton.setLocation(280,506);
+        InfoButton.setLocation(280,506);
+        InfoButton.setLocation(275,500);
     }
 }

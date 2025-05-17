@@ -16,7 +16,7 @@ public class InfoButton extends Actor {
     }
     if (Greenfoot.mouseClicked(this)) {
       Greenfoot.delay(2);
-      Greenfoot.setWorld(new Game());
+      Greenfoot.setWorld(new InfoMenu());
     }
   }
 }
