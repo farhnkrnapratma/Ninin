@@ -4,7 +4,7 @@ public class Play extends Actor
 {
     public Play()
     {   GreenfootImage img = getImage(); 
-        img.scale(180, 80); 
+        img.scale(160, 70); 
         setImage(img);
     }
     public void act(){
