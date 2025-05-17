@@ -1,11 +1,6 @@
-import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// SPDX-License-Identifier: MIT
+import greenfoot.*;
 
-/**
- * Write a description of class HomeButton here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class HomeButton extends Actor {
   public HomeButton() {
     GreenfootImage img = getImage();

@@ -1,4 +1,5 @@
-import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+// SPDX-License-Identifier: MIT
+import greenfoot.*;
 
 public class InfoButton extends Actor {
   public InfoButton() {

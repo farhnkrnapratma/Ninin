@@ -1,15 +1,15 @@
 # TODO
 
-- [ ] Ninin ke Ninja Escape 
+- [x] Ninin ke Ninja Escape 
 - [ ] BG untuk setiap level
-- [ ] Desain menu utama
-  - [ ] Play
-  - [ ] HelpButton
-  - [ ] InfoButton
+- [x] Desain menu utama
+  - [x] Play
+  - [x] HelpButton
+  - [x] InfoButton
   - [ ] Versi
   - [ ] Exit
-  - [ ] Background
-  - [ ] Logo
+  - [x] Background
+  - [x] Logo
 - [ ] Menu retry baru
   - [ ] Replay
   - [ ] HelpButton
