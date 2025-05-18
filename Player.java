@@ -158,6 +158,19 @@ public class Player extends Objects {
   }
 
   public void Changeimage() {
+    // [REI] Animasi nya lawak le awkowkoww
+    if (velocity_y < 0) {
+      setImage("Player_jump.png");
+    } else if (jumplock && velocity_y > 0.3f) {
+      setImage("Player_fall.png");
+    } else if (velocity_x < 0) {
+      setImage("Player_left.png");
+    } else if (velocity_x > 0) {
+      setImage("Player_right.png");
+    } else {
+      setImage("Player.png");
+    }
+    
     if (velocity_x != 0) Frameskipper--;
     else return;
 

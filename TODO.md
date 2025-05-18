@@ -6,7 +6,7 @@
   - [x] Play
   - [x] HelpButton
   - [x] InfoButton
-  - [ ] Versi
+  - [x] Versi
   - [ ] Exit
   - [x] Background
   - [x] Logo
@@ -18,10 +18,10 @@
   - [ ] Hero
   - [ ] Obstacle
   - [ ] Jebakan
-  - [ ] Kotak kayu
-  - [ ] Tanah rumput
-  - [ ] Tanah bawah
-  - [ ] Scroll ke Scroll
+  - [x] Kotak kayu
+  - [x] Tanah rumput
+  - [x] Tanah bawah
+  - [x] Coin ke Scroll
 - [ ] Menu tamat
   - [ ] Play again ke level 1
   - [ ] Donate
