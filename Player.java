@@ -8,6 +8,7 @@ public class Player extends Objects {
   private boolean freeze = false;
   private int TILE_SIZE = 20;
   private Game m_World;
+  private String lastDirection = "right"; // arah terakhir
 
   public Player(Game m_parent) {
     m_World = m_parent;
@@ -36,7 +37,6 @@ public class Player extends Objects {
   public void Collision() {
     if (velocity_x > 0) {
       Actor Box = getOneObjectAtOffset(10, 0, Box.class);
-
       if (Box != null) {
         Box box = (Box) Box;
         if (!box.SideIsSolid(10, 9, velocity_x)) {
@@ -64,7 +64,6 @@ public class Player extends Objects {
       }
     } else if (velocity_x < 0) {
       Actor Box = getOneObjectAtOffset(-10, 0, Box.class);
-
       if (Box != null) {
         Box box = (Box) Box;
         if (!box.SideIsSolid(-10, 9, velocity_x)) {
@@ -105,7 +104,7 @@ public class Player extends Objects {
       } else if (Box2 != null) {
         velocity_y = 0;
         jumplock = false;
-        setLocation(getX(), Box2.getY() - TILESIZE);
+        setLocation(getX(), Box2.getY() - TILE_SIZE);
       } else {
         int Y = getY() + 10 + (int) velocity_y;
         int X = getX() - 9;
@@ -158,19 +157,24 @@ public class Player extends Objects {
   }
 
   public void Changeimage() {
-    // [REI] Animasi nya lawak le awkowkoww
     if (velocity_y < 0) {
       setImage("Player_jump.png");
     } else if (jumplock && velocity_y > 0.3f) {
       setImage("Player_fall.png");
     } else if (velocity_x < 0) {
       setImage("Player_left.png");
+      lastDirection = "left";
     } else if (velocity_x > 0) {
       setImage("Player_right.png");
+      lastDirection = "right";
     } else {
-      setImage("Player.png");
+      if (lastDirection.equals("left")) {
+        setImage("Player_left.png");
+      } else {
+        setImage("Player_right.png");
+      }
     }
-    
+
     if (velocity_x != 0) Frameskipper--;
     else return;
 
@@ -178,12 +182,10 @@ public class Player extends Objects {
       if (changeimage) {
         Frameskipper = FrameMAX;
         changeimage = false;
-      } else if (!changeimage) {
+      } else {
         Frameskipper = FrameMAX;
         changeimage = true;
       }
-
-      if (velocity_x == 0) {}
     }
   }
 
