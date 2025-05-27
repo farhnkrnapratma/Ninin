@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 import greenfoot.*;
 
-public class PlayButton extends Actor {
-  public PlayButton() {
+public class ResumeButton extends Actor {
+    public ResumeButton() {
     GreenfootImage img = getImage();
     img.scale(160, 70);
     setImage(img);

@@ -11,10 +11,6 @@ public class HelpMenu extends World {
   private void prepare() {
     HomeButton homeButton = new HomeButton();
     addObject(homeButton, 283, 261);
-    homeButton.setLocation(85, 54);
-    homeButton.setLocation(26, 28);
-    homeButton.setLocation(33, 28);
-    homeButton.setLocation(92, 25);
-    homeButton.setLocation(66, 30);
+    homeButton.setLocation(65, 30);
   }
 }

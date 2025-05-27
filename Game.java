@@ -7,7 +7,7 @@ public class Game extends World {
   private Player Player = new Player(this);
 
   public int Level = 1;
-  public int Coins = 0;
+  public int Scroll = 0;
   public int Objects = 0;
   private boolean maploaded = false;
   private boolean Allobjectsdestroyed = false;
@@ -468,7 +468,7 @@ public class Game extends World {
   }
 
   public void GenerateLevel() {
-    Coins = 0;
+    Scroll = 0;
     Objects = 0;
 
     int px = TILESIZE / 2, py = TILESIZE / 2;
@@ -488,7 +488,7 @@ public class Game extends World {
           Objects++;
         } else if (ID == 6) {
           addObject(new Scroll(), px, py);
-          Coins++;
+          Scroll++;
           Objects++;
         } else if (ID == 7 || ID == 8) {
           addObject(new Enemy(ID), px, py);
@@ -506,7 +506,12 @@ public class Game extends World {
   }
 
   public void act() {
-    if (numberOfObjects() == Objects - Coins && maploaded || retry) {
+      
+    if (Greenfoot.isKeyDown("P")) {
+        Greenfoot.setWorld(new PauseMenu());
+    }
+    
+    if (numberOfObjects() == Objects - Scroll && maploaded || retry) {
       Player gPlayer = (Player) Player;
       gPlayer.Freeze(true);
       addObject(dummy, 0, 0);

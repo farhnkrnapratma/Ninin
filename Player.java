@@ -8,7 +8,7 @@ public class Player extends Objects {
   private boolean freeze = false;
   private int TILE_SIZE = 20;
   private Game m_World;
-  private String lastDirection = "right"; // arah terakhir
+  private String lastDirection = "right";
 
   public Player(Game m_parent) {
     m_World = m_parent;
@@ -191,7 +191,7 @@ public class Player extends Objects {
 
   public void GetInput() {
     boolean move_right = true, move_left = true;
-
+    
     if (Greenfoot.isKeyDown("D")) {
       if (velocity_x >= 0) velocity_x += 0.2f;
       else if (velocity_x < 0) velocity_x += 0.5f;
