@@ -1,24 +1,23 @@
 # TODO
 
 - [x] Ninin ke Ninja Escape 
-- [ ] BG untuk setiap level
+- [x] BG untuk setiap level
   - [x] Lvl 1
-  - [ ] Lvl 2
-  - [ ] Lvl 3
-  - [ ] Lvl 4
-  - [ ] Lvl 5
+  - [x] Lvl 2
+  - [x] Lvl 3
+  - [x] Lvl 4
+  - [x] Lvl 5
 - [x] Desain menu utama
   - [x] Play
   - [x] HelpButton
   - [x] InfoButton
   - [x] Versi
-  - [ ] Exit
   - [x] Background
   - [x] Logo
-- [ ] Menu retry baru
-  - [ ] Replay
-  - [ ] HelpButton
-  - [ ] Exit
+- [x] Menu retry baru
+  - [x] Replay
+  - [x] Help
+  - [x] Resume
 - [x] Edit aset di Photoshop
   - [x] Hero
   - [x] Obstacle
