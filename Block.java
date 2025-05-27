@@ -1,8 +1,17 @@
-// SPDX-License-Identifier: MIT
 import greenfoot.*;
 
 public class Block extends Tile {
   private int GFX = 0;
+  private int animationTimer = 0;
+  private int currentFrame = 0;
+  private static final int ANIMATION_SPEED = 15;
+  
+  // [REI] Digoyang Mas Asek Asek Joss
+  private static final String[] SPIKE_FRAMES = {
+      "Spikes_32.png",
+      "Spikes_32_left.png",
+      "Spikes_32_right.png"
+  };
 
   public Block(int i) {
     GFX = i;
@@ -23,6 +32,21 @@ public class Block extends Tile {
   }
 
   public void act() {
+    if (GFX == 3) {
+      animateSpikes();
+    }
+  }
+  
+  private void animateSpikes() {
+    animationTimer++;
+    
+    if (animationTimer >= ANIMATION_SPEED) {
+      animationTimer = 0;
+      
+      currentFrame = (currentFrame + 1) % SPIKE_FRAMES.length;
+      
+      setImage(SPIKE_FRAMES[currentFrame]);
+    }
   }
 
   public boolean isDeadly() {
@@ -39,6 +63,8 @@ public class Block extends Tile {
         break;
       case 3:
         setImage("Spikes_32.png");
+        animationTimer = 0;
+        currentFrame = 0;
         break;
       default:
         setImage("Block.bmp");

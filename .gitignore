@@ -42,5 +42,5 @@ bin/
 .DS_Store
 
 ### Greenfoot ###
-*.class
 *.ctxt
+*.class

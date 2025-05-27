@@ -2,8 +2,7 @@
 import greenfoot.*;
 
 public class Tile extends Actor {
-  public void act() {
-  }
+  public void act() {}
 
   public void SetGFX(int ID) {
     switch (ID) {
@@ -17,7 +16,7 @@ public class Tile extends Actor {
         break;
     }
 
-    World welt = (JumpNRun) this.getWorld();
-    welt.addObject(new Coin(), 22, 22);
+    World welt = (Game) this.getWorld();
+    welt.addObject(new Scroll(), 22, 22);
   }
 }
