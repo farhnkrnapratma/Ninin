@@ -1,5 +1,4 @@
 # Ninin - A Ninja Games
-![Ninin](./images/home_bg.png)
 
 ## How To Play
 
@@ -9,13 +8,13 @@ To start playing, just click the Play button.
 
 ---
 
-If you don't know how to control the character, just click the HelpButton button.
+If you don't know how to control the character, just click the Help button.
 
 ![HelpButton](./images/HelpButton.png)
 
 ---
 
-For detail information about this game, just click the InfoButton button.
+For detail information about this game, just click the Info button.
 
 ![InfoButton](./images/InfoButton.png)
 
