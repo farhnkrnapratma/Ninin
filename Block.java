@@ -5,12 +5,10 @@ public class Block extends Tile {
   private int animationTimer = 0;
   private int currentFrame = 0;
   private static final int ANIMATION_SPEED = 15;
-  
+
   // [REI] Digoyang Mas Asek Asek Joss
   private static final String[] SPIKE_FRAMES = {
-      "Spikes_32.png",
-      "Spikes_32_left.png",
-      "Spikes_32_right.png"
+    "Spikes_32.png", "Spikes_32_left.png", "Spikes_32_right.png"
   };
 
   public Block(int i) {
@@ -36,15 +34,15 @@ public class Block extends Tile {
       animateSpikes();
     }
   }
-  
+
   private void animateSpikes() {
     animationTimer++;
-    
+
     if (animationTimer >= ANIMATION_SPEED) {
       animationTimer = 0;
-      
+
       currentFrame = (currentFrame + 1) % SPIKE_FRAMES.length;
-      
+
       setImage(SPIKE_FRAMES[currentFrame]);
     }
   }

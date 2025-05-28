@@ -191,7 +191,7 @@ public class Player extends Objects {
 
   public void GetInput() {
     boolean move_right = true, move_left = true;
-    
+
     if (Greenfoot.isKeyDown("D")) {
       if (velocity_x >= 0) velocity_x += 0.2f;
       else if (velocity_x < 0) velocity_x += 0.5f;

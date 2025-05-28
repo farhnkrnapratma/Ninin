@@ -2,7 +2,7 @@
 import greenfoot.*;
 
 public class ReplayButton extends Actor {
-    public ReplayButton() {
+  public ReplayButton() {
     GreenfootImage img = getImage();
     img.scale(160, 70);
     setImage(img);

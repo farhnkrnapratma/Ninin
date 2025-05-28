@@ -12,6 +12,8 @@ public class Game extends World {
   private boolean maploaded = false;
   private boolean Allobjectsdestroyed = false;
   private boolean retry = false;
+  private boolean isPaused = false;
+  private static Game currentGameInstance = null;
 
   private int[][] LVL_data = {
     {
@@ -104,8 +106,23 @@ public class Game extends World {
 
   public Game() {
     super(20 * 28, 20 * 28, 1);
+    currentGameInstance = this;
     Greenfoot.setSpeed(50);
     GenerateLevel();
+  }
+
+  public static Game getCurrentInstance() {
+    return currentGameInstance;
+  }
+
+  public void pauseGame() {
+    isPaused = true;
+    Greenfoot.setWorld(new PauseMenu());
+  }
+
+  public void resumeGame() {
+    isPaused = false;
+    Greenfoot.setWorld(this);
   }
 
   public void ChangeLevel(int level) {
@@ -506,36 +523,39 @@ public class Game extends World {
   }
 
   public void act() {
-      
-    if (Greenfoot.isKeyDown("P")) {
-        Greenfoot.setWorld(new PauseMenu());
-    }
-    
-    if (numberOfObjects() == Objects - Scroll && maploaded || retry) {
-      Player gPlayer = (Player) Player;
-      gPlayer.Freeze(true);
-      addObject(dummy, 0, 0);
-      Greenfoot.setSpeed(70);
+
+    if (Greenfoot.isKeyDown("escape")) {
+      pauseGame();
+      return;
     }
 
-    if (numberOfObjects() == 1) {
-      removeObject(dummy);
-      Allobjectsdestroyed = true;
-      Player gPlayer = (Player) Player;
-      gPlayer.Freeze(false);
-      Greenfoot.setSpeed(50);
-    }
+    if (!isPaused) {
+      if (numberOfObjects() == Objects - Scroll && maploaded || retry) {
+        Player gPlayer = (Player) Player;
+        gPlayer.Freeze(true);
+        addObject(dummy, 0, 0);
+        Greenfoot.setSpeed(70);
+      }
 
-    if (Allobjectsdestroyed) {
-      Allobjectsdestroyed = false;
+      if (numberOfObjects() == 1) {
+        removeObject(dummy);
+        Allobjectsdestroyed = true;
+        Player gPlayer = (Player) Player;
+        gPlayer.Freeze(false);
+        Greenfoot.setSpeed(50);
+      }
 
-      if (!retry) Level++;
+      if (Allobjectsdestroyed) {
+        Allobjectsdestroyed = false;
 
-      retry = false;
+        if (!retry) Level++;
 
-      ChangeLevel(Level);
+        retry = false;
 
-      GenerateLevel();
+        ChangeLevel(Level);
+
+        GenerateLevel();
+      }
     }
   }
 
