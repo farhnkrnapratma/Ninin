@@ -1,66 +1,28 @@
 // SPDX-License-Identifier: MIT
 import greenfoot.*;
 
-public class Objects extends Actor {
-  protected double velocity_x = 0;
-  protected double velocity_y = 0;
-  protected double velocity_move_MAX = 5;
-  protected final double velocity_jump_MAX = 6;
-  protected final double velocity_fall_MAX = 8;
-
-  protected boolean changeimage = false;
-  protected int FrameMAX = 3;
-  protected int Frameskipper = FrameMAX;
-
-  protected final int TILESIZE = 20;
-
-  private static final double WALKING_SPEED = 5.0;
-
-  public Objects() {}
-
-  public void act() {}
-
-  public void turn(int angle) {
-    setRotation(getRotation() + angle);
-  }
-
-  public void movexy(double velocity_x, double velocity_y) {
-    setLocation(getX() + (int) velocity_x, getY() + (int) velocity_y);
-  }
-
-  public void move() {
-    double angle = Math.toRadians(getRotation());
-    int x = (int) Math.round(getX() + Math.cos(angle) * WALKING_SPEED);
-    int y = (int) Math.round(getY() + Math.sin(angle) * WALKING_SPEED);
-    setLocation(x, y);
-  }
-
-  public void move(double Speed) {
-    double angle = Math.toRadians(getRotation());
-    int x = (int) Math.round(getX() + Math.cos(angle) * Speed);
-    int y = (int) Math.round(getY() + Math.sin(angle) * Speed);
-    setLocation(x, y);
-  }
-
-  public boolean atWorldEdge() {
-    if (getX() < 20 || getX() > getWorld().getWidth() - 20) return true;
-    if (getY() < 20 || getY() > getWorld().getHeight() - 20) return true;
-    else return false;
-  }
-
-  public boolean canSee(Class clss) {
-    Actor actor = getOneObjectAtOffset(0, 0, clss);
-    return actor != null;
-  }
-
-  public void eat(Class clss) {
-    Actor actor = getOneObjectAtOffset(0, 0, clss);
-    if (actor != null) {
-      getWorld().removeObject(actor);
+public abstract class Objects extends Actor {
+    protected final int TILESIZE = 20;
+    protected float velocity_x = 0;
+    protected float velocity_y = 0;
+    protected final float velocity_move_MAX = 3.0f;
+    protected final float velocity_jump_MAX = 6.0f;
+    protected final float velocity_fall_MAX = 8.0f;
+    protected boolean changeimage = false;
+    protected int Frameskipper = 0;
+    protected final int FrameMAX = 8;
+    
+    protected void movexy(float x, float y) {
+        setLocation(getX() + (int)x, getY() + (int)y);
     }
-  }
-
-  public void SetSpeedLimit(int limit) {
-    if (limit != 0) velocity_move_MAX = limit;
-  }
+    
+    protected boolean isInBounds(int x, int y) {
+        return x >= 0 && x < 560 && y >= 0 && y < 560;
+    }
+    
+    protected void clampToScreen() {
+        int x = Math.max(0, Math.min(getX(), 560));
+        int y = Math.max(0, Math.min(getY(), 560));
+        setLocation(x, y);
+    }
 }

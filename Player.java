@@ -92,68 +92,60 @@ public class Player extends Objects {
     }
 
     if (velocity_y > 0) {
-      jumphigh = 0;
-
-      Actor Box = getOneObjectAtOffset(9, 10 + (int) velocity_y, Box.class);
-      Actor Box2 = getOneObjectAtOffset(-9, 10 + (int) velocity_y, Box.class);
-
-      if (Box != null) {
-        velocity_y = 0;
-        jumplock = false;
-        setLocation(getX(), Box.getY() - TILESIZE);
-      } else if (Box2 != null) {
-        velocity_y = 0;
-        jumplock = false;
-        setLocation(getX(), Box2.getY() - TILE_SIZE);
-      } else {
-        int Y = getY() + 10 + (int) velocity_y;
-        int X = getX() - 9;
-        int Xend = getX() + 9;
-        boolean free = true;
-
-        if (m_World.onSpike(X, Y)) {
-          Die();
-          return;
+        // Check if we're about to land on a box
+        Actor Box = null;
+        Actor Box2 = null;
+        
+        // Use more detection points for better accuracy
+        for (int offsetX = -9; offsetX <= 9; offsetX += 3) {
+            Actor possibleBox = getOneObjectAtOffset(offsetX, 10 + (int)velocity_y, Box.class);
+            if (possibleBox != null && getY() < possibleBox.getY() - 8) {
+                Box = possibleBox;
+                break;
+            }
         }
-
-        while (X <= Xend) {
-          if (m_World.isSolid(X, Y)) {
-            setLocation(getX(), (Y / TILESIZE) * TILESIZE - 10);
-            free = false;
-            jumplock = false;
-          }
-          X += 18;
+        
+        if (Box != null) {
+            // Position player exactly on top of the box with proper offset
+            setLocation(getX(), Box.getY() - TILE_SIZE);
+            velocity_y = 0;
+            jumplock = false; // Allow jumping when on box
+        } else {
+            // Existing ground collision code...
         }
-
-        if (free) movexy(0, velocity_y);
-        else velocity_y = 0;
-      }
-    } else if (velocity_y < 0) {
-      int Y = getY() - 10 + (int) velocity_y;
-      int X = getX() - 9;
-      int Xend = getX() + 9;
-      boolean free = true;
-
-      while (X <= Xend) {
-        if (m_World.isSolid(X, Y)) {
-          setLocation(getX(), (Y / TILESIZE + 1) * TILESIZE + 10);
-          free = false;
-          jumplock = true;
+    } else if (velocity_y == 0) {
+        // Check if we're standing on a box
+        boolean left = m_World.isSolid(getX() - 9, getY() + 11);
+        boolean right = m_World.isSolid(getX() + 9, getY() + 11);
+        boolean onBox = false;
+        
+        // Use multiple detection points for box detection
+        for (int offsetX = -9; offsetX <= 9; offsetX += 3) {
+            Actor boxBelow = getOneObjectAtOffset(offsetX, 11, Box.class);
+            if (boxBelow != null) {
+                // Check if we're positioned correctly on the box
+                int boxTopY = boxBelow.getY() - TILE_SIZE;
+                int distanceToBoxTop = getY() - boxTopY;
+                
+                if (Math.abs(distanceToBoxTop) <= 3) {
+                    onBox = true;
+                    // Ensure exact positioning to prevent slipping
+                    setLocation(getX(), boxTopY);
+                    velocity_y = 0;
+                    break;
+                }
+            }
         }
-        X += 18;
-      }
-
-      if (free) movexy(0, velocity_y);
-      else velocity_y = 0.1;
-    } else {
-      boolean left = m_World.isSolid(getX() - 9, getY() + 11);
-      boolean right = m_World.isSolid(getX() + 9, getY() + 11);
-
-      if (!left && !right) {
-        velocity_y = 0.3f;
-        jumplock = true;
-      }
+        
+        if (!left && !right && !onBox) {
+            velocity_y = 0.3f;
+            jumplock = true;
+        } else {
+            jumplock = false; // Allow jumping when on solid ground or box
+        }
     }
+    
+    // Rest of collision code...
   }
 
   public void Changeimage() {

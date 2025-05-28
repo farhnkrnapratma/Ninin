@@ -2,41 +2,72 @@
 import greenfoot.*;
 
 public class Enemy extends Objects {
-  protected double velocity_x = 0;
-
-  public Enemy(int i) {
-    if (i == 7) velocity_x = 2;
-    else if (i == 8) velocity_x = 3;
-    else velocity_x = 2;
-  }
-
-  public Enemy() {}
-
-  private void Collision() {
-    if (velocity_x > 0) {
-      Actor Block = getOneObjectAtOffset(10 + (int) velocity_x, 0, Block.class);
-      Actor empty = getOneObjectAtOffset(10 + (int) velocity_x, 11, Block.class);
-      Actor Box = getOneObjectAtOffset(10 + (int) velocity_x, 0, Box.class);
-
-      if (Block != null || Box != null || empty == null) {
-        velocity_x = -velocity_x;
-      } else {
-        movexy(velocity_x, 0);
-      }
-    } else if (velocity_x < 0) {
-      Actor Block = getOneObjectAtOffset(-10 + (int) velocity_x, 0, Block.class);
-      Actor empty = getOneObjectAtOffset(-10 + (int) velocity_x, 11, Block.class);
-      Actor Box = getOneObjectAtOffset(-10 + (int) velocity_x, 0, Box.class);
-
-      if (Block != null || Box != null || empty == null) {
-        velocity_x = -velocity_x;
-      } else {
-        movexy(velocity_x, 0);
-      }
+    private int movementDirection = 1;
+    private int movementType;
+    private Game world;
+    private int moveCounter = 0;
+    private final int MOVE_DISTANCE = GameConfig.TILE_SIZE * 3;
+    
+    public Enemy(int type) {
+        this.movementType = type;
+        setImage("Obstacle.png");
     }
-  }
-
-  public void act() {
-    Collision();
-  }
+    
+    protected void addedToWorld(World world) {
+        this.world = (Game) world;
+    }
+    
+    public void act() {
+        move();
+    }
+    
+    private void move() {
+        if (movementType == GameConfig.ENEMY_HORIZONTAL) {
+            moveHorizontally();
+        } else if (movementType == GameConfig.ENEMY_VERTICAL) {
+            moveVertically();
+        }
+    }
+    
+    private void moveHorizontally() {
+        int newX = getX() + (movementDirection * 2);
+        
+        if (canMoveTo(newX, getY())) {
+            setLocation(newX, getY());
+            moveCounter += 2;
+        } else {
+            movementDirection *= -1;
+            moveCounter = 0;
+        }
+        
+        if (moveCounter >= MOVE_DISTANCE) {
+            movementDirection *= -1;
+            moveCounter = 0;
+        }
+    }
+    
+    private void moveVertically() {
+        int newY = getY() + (movementDirection * 2);
+        
+        if (canMoveTo(getX(), newY)) {
+            setLocation(getX(), newY);
+            moveCounter += 2;
+        } else {
+            movementDirection *= -1;
+            moveCounter = 0;
+        }
+        
+        if (moveCounter >= MOVE_DISTANCE) {
+            movementDirection *= -1;
+            moveCounter = 0;
+        }
+    }
+    
+    private boolean canMoveTo(int x, int y) {
+        if (world == null) return true;
+        
+        return !world.isSolid(x, y) && 
+               x >= 0 && x < GameConfig.PIXEL_WIDTH &&
+               y >= 0 && y < GameConfig.PIXEL_HEIGHT;
+    }
 }

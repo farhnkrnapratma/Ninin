@@ -1,28 +1,25 @@
 // SPDX-License-Identifier: MIT
 import greenfoot.*;
+import java.util.List;
 
-public class Dummy extends Objects {
-  public int _x = 0;
-  public int _y = 0;
-
-  public void act() {
-    if (_x + TILESIZE >= 28 * TILESIZE) {
-      _x = TILESIZE / 2;
-      _y += TILESIZE;
-    } else {
-      _x += TILESIZE;
+public class Dummy extends Actor {
+    public Dummy() {
+        // Create a small invisible image
+        GreenfootImage image = new GreenfootImage(1, 1);
+        image.setTransparency(0);
+        setImage(image);
     }
-
-    if (_y + TILESIZE >= 29 * TILESIZE) {
-      _y = TILESIZE / 2;
+    
+    public void act() {
+        // Remove all objects except the player and dummy
+        World world = getWorld();
+        if (world != null) {
+            List<Actor> actors = world.getObjects(Actor.class);
+            for (Actor actor : actors) {
+                if (!(actor instanceof Player) && !(actor instanceof Dummy)) {
+                    world.removeObject(actor);
+                }
+            }
+        }
     }
-
-    setLocation(_x, _y);
-
-    if (canSee(Player.class)) eat(Player.class);
-    else if (canSee(Box.class)) eat(Box.class);
-    else if (canSee(Block.class)) eat(Block.class);
-    else if (canSee(Scroll.class)) eat(Scroll.class);
-    else if (canSee(Enemy.class)) eat(Enemy.class);
-  }
 }
