@@ -452,7 +452,7 @@ public class Game extends World {
             1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 2, 2, 2, 2, 2, 2, 2, 2, 6, 6, 6, 6, 6, 6, 1, 0, 1,
           },
           {
-            1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 6, 6, 6, 6, 6, 6, 1, 0, 1,
+            1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6, 6, 6, 6, 6, 6, 1, 0, 1,
           },
           {
             1, 5, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 6, 0, 0, 7, 0, 1, 6, 6, 6, 6, 6, 6, 0, 0, 1,
@@ -506,10 +506,6 @@ public class Game extends World {
   }
 
   public void act() {
-      
-    if (Greenfoot.isKeyDown("P")) {
-        Greenfoot.setWorld(new PauseMenu());
-    }
     
     if (numberOfObjects() == Objects - Scroll && maploaded || retry) {
       Player gPlayer = (Player) Player;
