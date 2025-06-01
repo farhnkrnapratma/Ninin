@@ -17,7 +17,12 @@ public class ResumeButton extends Actor {
     }
     if (Greenfoot.mouseClicked(this)) {
       Greenfoot.delay(2);
-      Greenfoot.setWorld(new Game());
+      Game currentGame = Game.getCurrentInstance();
+      if (currentGame != null) {
+        currentGame.resumeGame();
+      } else {
+        Greenfoot.setWorld(new Game());
+      }
     }
   }
 }

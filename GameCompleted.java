@@ -7,18 +7,20 @@ public class GameCompleted extends World {
         prepare();
     }
     
-    private void prepare()
-    {
-        ReplayButton replayButton = new ReplayButton();
+    private void prepare() {
         HomeButton homeButton = new HomeButton();
         YouWin youWin = new YouWin();
-        
-        addObject(replayButton,446,291);
+        ReplayButton replayButton = new ReplayButton();
+        HelpButton helpButton = new HelpButton();
+
         addObject(homeButton,304,313);
         addObject(youWin,353,226);
-        
+        addObject(replayButton,446,291);
+        addObject(helpButton,293,404);
+
         homeButton.setLocation(65,30);
-        youWin.setLocation(275,250);
-        replayButton.setLocation(275 ,329);
+        youWin.setLocation(275, 250);
+        replayButton.setLocation(275, 340);
+        helpButton.setLocation(275, 410);
     }
 }

@@ -9,18 +9,15 @@ public class PauseMenu extends World {
     
     private void prepare() {
         HomeButton homeButton = new HomeButton();
-        HelpButton helpButton = new HelpButton();
         ReplayButton replayButton = new ReplayButton();
         ResumeButton resumeButton = new ResumeButton();
         
         addObject(homeButton, 290, 290);
-        addObject(helpButton, 290, 290);
         addObject(replayButton, 290, 290);
         addObject(resumeButton, 290, 290);
         
         homeButton.setLocation(65, 30);
         resumeButton.setLocation(275,250);
         replayButton.setLocation(275,320);
-        helpButton.setLocation(275,390);
     }
 }
