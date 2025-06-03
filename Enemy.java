@@ -2,41 +2,50 @@
 import greenfoot.*;
 
 public class Enemy extends Objects {
-  protected double velocity_x = 0;
+    // Horizontal velocity of the enemy
+    protected double velocityX = 0;
 
-  public Enemy(int i) {
-    if (i == 7) velocity_x = 2;
-    else if (i == 8) velocity_x = 3;
-    else velocity_x = 2;
-  }
-
-  public Enemy() {}
-
-  private void Collision() {
-    if (velocity_x > 0) {
-      Actor Block = getOneObjectAtOffset(10 + (int) velocity_x, 0, Block.class);
-      Actor empty = getOneObjectAtOffset(10 + (int) velocity_x, 11, Block.class);
-      Actor Box = getOneObjectAtOffset(10 + (int) velocity_x, 0, Box.class);
-
-      if (Block != null || Box != null || empty == null) {
-        velocity_x = -velocity_x;
-      } else {
-        movexy(velocity_x, 0);
-      }
-    } else if (velocity_x < 0) {
-      Actor Block = getOneObjectAtOffset(-10 + (int) velocity_x, 0, Block.class);
-      Actor empty = getOneObjectAtOffset(-10 + (int) velocity_x, 11, Block.class);
-      Actor Box = getOneObjectAtOffset(-10 + (int) velocity_x, 0, Box.class);
-
-      if (Block != null || Box != null || empty == null) {
-        velocity_x = -velocity_x;
-      } else {
-        movexy(velocity_x, 0);
-      }
+    // Constructor with parameter to set initial velocity based on type
+    public Enemy(int type) {
+        if (type == 7) velocityX = 2;
+        else if (type == 8) velocityX = 3;
+        else velocityX = 2;
     }
-  }
 
-  public void act() {
-    Collision();
-  }
+    // Default constructor
+    public Enemy() {}
+
+    // Handle collision detection and movement logic
+    private void collision() {
+        if (velocityX > 0) {
+            // Check for block or box in front, and if ground exists below
+            Actor block = getOneObjectAtOffset(10 + (int) velocityX, 0, Block.class);
+            Actor empty = getOneObjectAtOffset(10 + (int) velocityX, 11, Block.class);
+            Actor box = getOneObjectAtOffset(10 + (int) velocityX, 0, Box.class);
+
+            // Reverse direction if obstacle or no ground ahead
+            if (block != null || box != null || empty == null) {
+                velocityX = -velocityX;
+            } else {
+                movexy(velocityX, 0);
+            }
+        } else if (velocityX < 0) {
+            // Check for block or box in front, and if ground exists below when moving left
+            Actor block = getOneObjectAtOffset(-10 + (int) velocityX, 0, Block.class);
+            Actor empty = getOneObjectAtOffset(-10 + (int) velocityX, 11, Block.class);
+            Actor box = getOneObjectAtOffset(-10 + (int) velocityX, 0, Box.class);
+
+            // Reverse direction if obstacle or no ground ahead
+            if (block != null || box != null || empty == null) {
+                velocityX = -velocityX;
+            } else {
+                movexy(velocityX, 0);
+            }
+        }
+    }
+
+    // Called every frame to update enemy behavior
+    public void act() {
+        collision();
+    }
 }
